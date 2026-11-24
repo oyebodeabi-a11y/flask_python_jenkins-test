@@ -13,7 +13,7 @@ pipeline{
             steps{
                 sh 'printenv'
                 sh 'git version'
-                sh 'docker build . -t abiprojectalone1/imag1.0'
+                sh 'docker build . -t bims15/image2.0'
             }
         }
          stage("push image to DockerHub"){
@@ -22,9 +22,9 @@ pipeline{
                script {
                   
                  withCredentials([string(credentialsId: 'dockerID', variable: 'dockerID')]) {
-                    sh 'docker login -u abiprojectalone1 -p ${dockerID}'
+                    sh 'docker login -u bims15 -p ${dockerID}'
             }
-              sh 'docker push abiprojectalone1/imag1.0:latest'
+              sh 'docker push bims15/image2.0:latest'
             }
         }
     }
